@@ -20,9 +20,6 @@ X_test, y_test = load_mnist('testing')
     Create smaller subsets of the data.
     100 examples for each digit in training. total 1000 examples.
 '''
-# Create a new custom array, with index and label values (for easier sorting)
-# y_train_custom = np.asarray([(y_train[i], i) for i in range(y_train.shape[0])],dtype=[('label', int), ('index', int)])
-# y_train_custom = np.sort(y_train_custom, order="label")
 
 # Sort the training data based on labels.
 y_train_index = {}
@@ -47,10 +44,14 @@ X_test = np.reshape(X_test, (X_test.shape[0], -1))
 dists = mlBasics.compute_euclidean_distances(X_train, X_test)
 
 # 2) Run the code below and predict labels:
-y_test_pred = mlBasics.predict_labels(dists, y_train)
+giy_test_pred_k1 = mlBasics.predict_labels(dists, y_train, k=1)
+y_test_pred_k5 = mlBasics.predict_labels(dists, y_train, k=5)
+
+# Visualizing
 
 # 3) Report results
 # you should get following message '99.91 of test examples classified correctly.'
-print '{0:0.02f}'.format(np.mean(y_test_pred == y_test) * 100), "of test examples classified correctly."
+print '{0:0.02f}'.format(np.mean(y_test_pred_k1 == y_test) * 100), "of test examples classified correctly. k=1"
+print '{0:0.02f}'.format(np.mean(y_test_pred_k5 == y_test) * 100), "of test examples classified correctly. k=5"
 
 

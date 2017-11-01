@@ -1,0 +1,10 @@
+# KNN
+
+# Q1:
+
+- Demo KNN works with 99.91% accuracy.
+
+# Q2:
+
+- Accuracy when k=1 is
+- Accuracy when k=5 is

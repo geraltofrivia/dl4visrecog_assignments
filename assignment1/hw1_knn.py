@@ -49,7 +49,7 @@ def predict_labels( dists, labels, k=1):
     for row in dists:
 
         # Sort the indices of the array (ascending), and take k from the last
-        indices = row.argsort()[-k:]
+        indices = row.argsort()[:k]
 
         # Juxtapose these indices on labels to get k nearest labels
         nearest_labels = labels[indices]
@@ -58,7 +58,7 @@ def predict_labels( dists, labels, k=1):
         votes = np.unique(nearest_labels, return_counts=True)
 
         # Select the most frequently occurring value
-        winner = votes[np.argmax(votes[1])]
+        winner = votes[0][np.argmax(votes[1])]
 
         # Pop goes the weasel
         op.append(winner)

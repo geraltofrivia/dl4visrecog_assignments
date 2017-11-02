@@ -7,8 +7,8 @@
 
 from load_mnist import *
 import hw1_knn  as mlBasics
-from sklearn.metrics import confusion_matrix
 import numpy as np
+from matplotlib import pyplot as plt
 
 # Load data - two class
 # X_train, y_train = load_mnist('training' , [0,1] )
@@ -50,7 +50,7 @@ def run(X_train, y_train, X_test, y_test, _k=[1]):
     for key in y_preds:
         print '{0:0.02f}'.format(np.mean(y_preds[key] == y_test) * 100), "of test examples classified correctly. k =", key
 
-    return y_preds
+    return y_preds, [np.mean(y_preds[key] == y_test) for key in _k]
 
 
 '''
@@ -77,8 +77,9 @@ X_test = np.reshape(X_test, (X_test.shape[0], -1))
 
 # Make 5-fold cross validation splits.
 indices = np.arange(1000)
+logs = []
 for i in range(5):
-    print "Running on split ", i+1
+    print "\n\nRunning on split ", i+1
     np.random.shuffle(indices)
     test = indices[i*200:(i+1)*200]
     if i == 0:
@@ -89,14 +90,31 @@ for i in range(5):
         train = np.concatenate((indices[:i*200], indices[(i+1)*200:]), axis=0)
 
     # Juxtapose indices on data
-    X_train = X_train[train]
-    X_test = X_train[test]
-    y_train = y_train[train]
-    y_train = y_train[test]
+    X_train_local = X_train[train]
+    X_test_local = X_train[test]
+    y_train_local = y_train[train]
+    y_test_local = y_train[test]
     k = range(1,16)
 
     # Run the experiment(s)
-    y_preds = run(X_train, y_train, X_test, y_test, _k=[1, 5])
+    y_pred, accuracies = run(X_train_local, y_train_local, X_test_local, y_test_local, _k=k)
+    logs.append(accuracies)
+
+logs = np.asarray(logs)
+print logs
+print np.sum(logs, axis=0)
+print np.mean(logs, axis=0)
+
+# Plotting time.
+x = range(1,16)
+for i in range(logs.shape[0]):
+    plt.plot(x, logs[i], label='split '+str(i))
+plt.plot(x, np.mean(logs, axis=0), label="avg", lw=2)
+plt.xlabel("k")
+plt.ylabel("accuracy")
+plt.legend(loc="upper right")
+plt.show()
+
 
 
 

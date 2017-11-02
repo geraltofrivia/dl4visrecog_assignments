@@ -1,7 +1,8 @@
 """
-    Created on Nov 1, '17
+    Created on Nov 2, '17
     Person to send awards to if this script breaks loose, goes sentient and starts a new nuclear winter: Priyansh :]
 
+    Same as hw1_main_knn but for running cross validation tests
 """
 
 from load_mnist import *
@@ -52,7 +53,6 @@ def run(X_train, y_train, X_test, y_test, _k=[1]):
     return y_preds
 
 
-
 '''
     Create smaller subsets of the data.
     100 examples for each digit in training. total 1000 examples.
@@ -75,16 +75,34 @@ X_train, Y_train = X_train[sample_indices], y_train[sample_indices]
 X_train = np.reshape(X_train, (X_train.shape[0], -1))
 X_test = np.reshape(X_test, (X_test.shape[0], -1))
 
-# Run the experiment(s)
-y_preds = run(X_train, y_train, X_test, y_test, _k=[1, 5])
+# Make 5-fold cross validation splits.
+indices = np.arange(1000)
+for i in range(5):
+    print "Running on split ", i+1
+    np.random.shuffle(indices)
+    test = indices[i*200:(i+1)*200]
+    if i == 0:
+        train = indices[(i+1)*200:]
+    elif i == 4:
+        train = indices[:i*200]
+    else:
+        train = np.concatenate((indices[:i*200], indices[(i+1)*200:]), axis=0)
 
-# 4) Visualize Nearest Neighbors
-# @TODO: How the fuck
+    # Juxtapose indices on data
+    X_train = X_train[train]
+    X_test = X_train[test]
+    y_train = y_train[train]
+    y_train = y_train[test]
+    k = range(1,16)
 
-# 5) Confusion Matrix
-print 'Confusion matrix for k=1'
-print confusion_matrix(y_test, y_preds[1])
-print 'Confusion matrix for k=5'
-print confusion_matrix(y_test, y_preds[5])
+    # Run the experiment(s)
+    y_preds = run(X_train, y_train, X_test, y_test, _k=[1, 5])
+
+
+
+
+
+
+
 
 

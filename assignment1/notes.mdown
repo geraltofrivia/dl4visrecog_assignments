@@ -6,5 +6,31 @@
 
 # Q2:
 
-- Accuracy when k=1 is
-- Accuracy when k=5 is
+9.70 of test examples classified correctly. k= 1
+9.68 of test examples classified correctly. k= 5
+Confusion matrix for k=1
+[[118 125  68 135 135  36  70 106  88  99]
+ [104 162 141  96 136  65  86 122 103 120]
+ [120 124  98 115 147 107 118  58  61  84]
+ [ 39  89 126  69 115  81 119 204  55 113]
+ [ 93 112 101  70 109 107  92 126  71 101]
+ [ 34 123 138  71  68 106  89  74  95  94]
+ [103 111  99  71 107 107  65 160  76  59]
+ [150  68  41  76 128  88  90  97 199  91]
+ [122  51 117 170  85  95  80 113  66  75]
+ [ 97 175  73  70 112  88  87 164  63  80]]
+Confusion matrix for k=5
+[[219 234  59 140 104  21  48  82  31  42]
+ [206 271 188  71 103  68  42  44  79  63]
+ [279 229 107 103 102  73  57  17  23  42]
+ [101 186 202  41  86  26  72 204  21  71]
+ [206 195 108  46 106  75  83  96  42  25]
+ [100 207 194  70  36  81  48  53  41  62]
+ [279 137 185  46  95  46  19 108  14  29]
+ [319 156  33  33  84  48  70  50 195  40]
+ [289  94 153 105  83  65  39  74  27  45]
+ [187 276  65  61 122  42  62 124  23  47]]
+
+Why would it be so low? Given that we got near perfect score on two class classification. Well I believe it happens since we have only 100 examples per class.
+Why then would the other thing be so damned high? Well it is radically easy to differentiate b/w 0 and 1. Probably the most distinct of all numbers. Here the contention is b/w 10.
+But a probability of 10% simply means that the labels are being assigned randomly. Weird.

@@ -6,6 +6,7 @@
 
 from load_mnist import *
 import hw1_knn  as mlBasics
+from sklearn.metrics import confusion_matrix
 import numpy as np
 
 # Load data - two class
@@ -15,6 +16,40 @@ import numpy as np
 # Load data - ALL CLASSES
 X_train, y_train = load_mnist('training')
 X_test, y_test = load_mnist('testing')
+
+
+def run(X_train, y_train, X_test, y_test, _k=[1]):
+    """
+    Script to run the experiment given some data. It would train the Knn (compute n x n distances).
+    And then predict labels for the test set.
+
+    :param X_train: np mat, dimensions: N x D
+    :param y_train: np mat, dimensions: N
+    :param X_test: np mat, dimensions: M x D
+    :param y_test: np mat, dimensions: M
+    :param _k: list of int. How many k's to test for.
+
+    :return: y_pred: np mat, dimensions: M
+    """
+    # Compute distances:
+    dists = mlBasics.compute_euclidean_distances(X_train, X_test)
+
+    y_preds = {}  # Store ops in this
+
+    # For all k,
+    for k in _k:
+
+        # Predict labels
+        y_test_pred = mlBasics.predict_labels(dists, y_train, k=k)
+
+        # Store them
+        y_preds[k] = y_test_pred
+
+    # Report results
+    for key in y_preds:
+        print '{0:0.02f}'.format(np.mean(y_preds[key] == y_test) * 100), "of test examples classified correctly. k =", key
+
+    return y_preds
 
 '''
     Create smaller subsets of the data.
@@ -39,19 +74,16 @@ X_train, Y_train = X_train[sample_indices], y_train[sample_indices]
 X_train = np.reshape(X_train, (X_train.shape[0], -1))
 X_test = np.reshape(X_test, (X_test.shape[0], -1))
 
-# Test on test data
-# 1) Compute distances:
-dists = mlBasics.compute_euclidean_distances(X_train, X_test)
+# Run the experiment(s)
+y_preds = run(X_train, y_train, X_test, y_test, _k=[1, 5])
 
-# 2) Run the code below and predict labels:
-giy_test_pred_k1 = mlBasics.predict_labels(dists, y_train, k=1)
-y_test_pred_k5 = mlBasics.predict_labels(dists, y_train, k=5)
+# 4) Visualize Nearest Neighbors
+# @TODO: How the fuck
 
-# Visualizing
-
-# 3) Report results
-# you should get following message '99.91 of test examples classified correctly.'
-print '{0:0.02f}'.format(np.mean(y_test_pred_k1 == y_test) * 100), "of test examples classified correctly. k=1"
-print '{0:0.02f}'.format(np.mean(y_test_pred_k5 == y_test) * 100), "of test examples classified correctly. k=5"
+# 5) Confusion Matrix
+print 'Confusion matrix for k=1'
+print confusion_matrix(y_test, y_preds[1])
+print 'Confusion matrix for k=5'
+print confusion_matrix(y_test, y_preds[5])
 
 

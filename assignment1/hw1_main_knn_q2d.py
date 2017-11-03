@@ -41,7 +41,7 @@ def run(X_train, y_train, X_test, y_test, _k=[1]):
     # Compute distances:
     dists = mlBasics.compute_euclidean_distances(X_train, X_test)
 
-    # y_preds = {}  # Store ops in this
+    print "Distances computed"
 
     # For all k,
     for k in _k:
@@ -50,11 +50,6 @@ def run(X_train, y_train, X_test, y_test, _k=[1]):
         y_test_pred = mlBasics.predict_labels(dists, y_train, k=k)
 
         print '{0:0.02f}'.format(np.mean(y_test_pred == y_test) * 100), "of test examples classified correctly. k =", key
-        # Store them
-        # y_preds[k] = y_test_pred
-
-
-    # return y_preds, [np.mean(y_preds[key] == y_test) for key in _k]
 
 # Run the experiment
 run(X_train, y_train, X_test, y_test, _k=[1, 15])

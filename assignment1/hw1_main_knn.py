@@ -7,6 +7,7 @@
 from load_mnist import *
 import hw1_knn  as mlBasics
 from sklearn.metrics import confusion_matrix
+from matplotlib import pyplot as plt
 import numpy as np
 
 # Load data - two class
@@ -49,7 +50,7 @@ def run(X_train, y_train, X_test, y_test, _k=[1]):
     for key in y_preds:
         print '{0:0.02f}'.format(np.mean(y_preds[key] == y_test) * 100), "of test examples classified correctly. k =", key
 
-    return y_preds
+    return y_preds, dists
 
 
 '''
@@ -78,7 +79,29 @@ X_test = np.reshape(X_test, (X_test.shape[0], -1))
 y_preds = run(X_train, y_train, X_test, y_test, _k=[1, 5])
 
 # 4) Visualize Nearest Neighbors
-# @TODO: How the fuck
+tovisualize_k1 = y_preds[1][:10]
+tovisualize_k5 = y_preds[5][:10]
+
+# Get label here. Get its actual values from X_test. (Hoping that we haven't shuffled the order anytime in b/w
+for i in range(len(X_test[:10])):
+
+    datum = X_test[i]
+
+    # Restore the image in its former glory.
+    datum_mat = datum.reshape((28,28))
+
+    # Prepare labels
+    label_k1 = str(tovisualize_k1[i])
+    label_k5 = str(tovisualize_k5[i])
+    title = 'k=1 label is %(k1)s, k=5 label is %(k5)s' % {'k1': label_k1, 'k5': label_k5}
+    plt.title(title)
+
+    # Plot this data point in pyplot
+    plt.imshow(datum_mat, cmap='gray')
+    plt.show()
+
+
+
 
 # 5) Confusion Matrix
 print 'Confusion matrix for k=1'

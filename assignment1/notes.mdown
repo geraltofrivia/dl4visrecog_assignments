@@ -6,35 +6,37 @@
 
 ### Q2 a,b - all classes:
 
-9.70 of test examples classified correctly. k= 1
-Confusion matrix:
-[[118 125  68 135 135  36  70 106  88  99]
- [104 162 141  96 136  65  86 122 103 120]
- [120 124  98 115 147 107 118  58  61  84]
- [ 39  89 126  69 115  81 119 204  55 113]
- [ 93 112 101  70 109 107  92 126  71 101]
- [ 34 123 138  71  68 106  89  74  95  94]
- [103 111  99  71 107 107  65 160  76  59]
- [150  68  41  76 128  88  90  97 199  91]
- [122  51 117 170  85  95  80 113  66  75]
-5  73  7 [ 97 170 112  88  87 164  63  80]]
+9.70 of test examples classified correctly. k = 1
+[[131 163  28 105  79  77 138  98  71  90]
+ [ 83 101 130 107 163  93  69  83 152 154]
+ [126 156  81 101  79  78 121 122  75  93]
+ [ 36  94 204  91 110  83  81 116  75 120]
+ [ 99 161  63 122  59  78  81  92 105 122]
+ [ 84  82 105 130  58 130  83  84  60  76]
+ [127 106 100  77 111 101  97 121  43  75]
+ [122  73  17  71 115  72 142 105 170 141]
+ [ 59  72 104 136 150 112  84  97  81  79]
+ [113  74  45  67 140  92  96 193  95  94]]
 
-9.68 of test examples classified correctly. k= 5
-Confusion matrix:
-[[219 234  59 140 104  21  48  82  31  42]
- [206 271 188  71 103  68  42  44  79  63]
- [279 229 107 103 102  73  57  17  23  42]
- [101 186 202  41  86  26  72 204  21  71]
- [206 195 108  46 106  75  83  96  42  25]
- [100 207 194  70  36  81  48  53  41  62]
- [279 137 185  46  95  46  19 108  14  29]
- [319 156  33  33  84  48  70  50 195  40]
- [289  94 153 105  83  65  39  74  27  45]
- [187 276  65  61 122  42  62 124  23  47]]
+10.63 of test examples classified correctly. k = 5
+[[282 244  42  77  63  76  58  77  24  37]
+ [170 241 207 120 110  68  20  71  45  83]
+ [266 264 102  73  49  50  75 101  16  36]
+ [ 91 177 302 100  64  60  25  90  22  79]
+ [259 204  55  45  59  35  76  72  91  86]
+ [191 168 151 108  35  68  43  60  30  38]
+ [272 207 118  52  73  48  65  96   7  20]
+ [240 147  48  52 113  40  73  54 164  97]
+ [133 140 134 144 120  91  53  77  46  36]
+ [264 129  44  31 104  83  76 179  53  46]]
+
+Legend: left-right is predicted. Up to down is actual.
 
 Why would it be so low? Given that we got near perfect score on two class classification. Well I believe it happens since we have only 100 examples per class.
 Why then would the other thing be so damned high? Well it is radically easy to differentiate b/w 0 and 1. Probably the most distinct of all numbers. Here the contention is b/w 10.
 But a probability of 10% simply means that the labels are being assigned randomly. Weird.
+
+
 
 
 #### Q2 c - cross validation:
@@ -60,6 +62,8 @@ Or maybe... I have cracked the code to generate pure random numbers.
 #### Q2 d - All classes, all examples
 NOTE: It is ambigous whether I have to perform cross validation, or not. I am assuming that I do not. 
 Using X_train, X_test in this case now.
+
+<Experiment doesn't fit in RAM :/ >
 
 
 # Logistic Regression

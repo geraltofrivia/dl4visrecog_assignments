@@ -8,7 +8,8 @@ Created on
  
 from load_mnist import * 
 import hw1_linear  as mlBasics  
-import numpy as np 
+from matplotlib import pyplot as plt
+import numpy as np
 
 
 # Read in training and test data
@@ -24,13 +25,17 @@ X_test = np.divide(X_test, 256)
 W0 = np.zeros(X_train.shape[1])
 b0 = 0
 
+
 # Optimization
-num_iters = 100; 
+num_iters = 1000 # NOTE: Changed for experiment 3
 eta = 0.001
-W,b = mlBasics.train(X_train, y_train, W0, b0, num_iters, eta)
+W, b, log = mlBasics.train(X_train, y_train, W0, b0, num_iters, eta)
  
 
 # Test on test data 
 yhat = mlBasics.predict(X_test, W, b)>=.5 
 print np.mean(yhat==y_test)*100, "% of test examples classified correctly."
-  
+
+# Plot time!
+plt.plot(range(num_iters), log)
+plt.show()

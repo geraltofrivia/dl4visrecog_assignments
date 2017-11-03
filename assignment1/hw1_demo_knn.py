@@ -30,7 +30,7 @@ X_test = np.reshape(X_test, (X_test.shape[0], -1))
 dists = mlBasics.compute_euclidean_distances(X_train,X_test)
 
 # 2) Run the code below and predict labels:
-y_test_pred = mlBasics.predict_labels(dists, y_train ) 
+y_test_pred = mlBasics.predict_labels(dists, y_train)
 
 # 3) Report results
 # you should get following message '99.91 of test examples classified correctly.'

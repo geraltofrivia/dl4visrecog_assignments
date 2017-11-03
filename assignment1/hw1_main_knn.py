@@ -52,7 +52,6 @@ def run(X_train, y_train, X_test, y_test, _k=[1]):
     return y_preds
 
 
-
 '''
     Create smaller subsets of the data.
     100 examples for each digit in training. total 1000 examples.

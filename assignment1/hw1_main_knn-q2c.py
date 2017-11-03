@@ -77,10 +77,10 @@ X_test = np.reshape(X_test, (X_test.shape[0], -1))
 
 # Make 5-fold cross validation splits.
 indices = np.arange(1000)
+np.random.shuffle(indices)
 logs = []
 for i in range(5):
     print "\n\nRunning on split ", i+1
-    np.random.shuffle(indices)
     test = indices[i*200:(i+1)*200]
     if i == 0:
         train = indices[(i+1)*200:]

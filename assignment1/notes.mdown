@@ -17,7 +17,7 @@ Confusion matrix:
  [103 111  99  71 107 107  65 160  76  59]
  [150  68  41  76 128  88  90  97 199  91]
  [122  51 117 170  85  95  80 113  66  75]
- [ 97 175  73  70 112  88  87 164  63  80]]
+5  73  7 [ 97 170 112  88  87 164  63  80]]
 
 9.68 of test examples classified correctly. k= 5
 Confusion matrix:
@@ -59,4 +59,30 @@ Or maybe... I have cracked the code to generate pure random numbers.
 
 #### Q2 d - All classes, all examples
 NOTE: It is ambigous whether I have to perform cross validation, or not. I am assuming that I do not. 
-Using X_train, X_test in this case now. 
+Using X_train, X_test in this case now.
+
+
+# Logistic Regression
+
+### Q1: Derivatives
+
+_s(x)_ = 1 / (1 + e^(-x) )
+
+u = wx + b
+v = s( u )
+l = (y - v)^2
+
+dl/dv = -2 ( y - v )
+dl/du = dl/dv * dv/du
+      = dl/dv * s(u) * (1 - s(u))
+**dl/dw = x dl/du**
+**dl/db = dl/du**
+
+### Q2: Implement
+
+Done
+`99.802605606 % of test examples classified correctly.`
+
+### Q3: Plot
+`99.9368337939 % of test examples classified correctly.`
+t1000_sigmoid_results.png -> plot

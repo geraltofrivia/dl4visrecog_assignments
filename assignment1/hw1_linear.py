@@ -81,5 +81,5 @@ def train(X,y,W,b, num_iters=1000, eta=0.001):
 
         log.append(l)
 
-    return W, b, log
+    return W, b, log 
 

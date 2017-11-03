@@ -13,7 +13,7 @@ import numpy as np
 
 
 # Read in training and test data
-X_train, y_train = load_mnist('training', [0,1]  ) 
+X_train, y_train = load_mnist('training', [0,1]  )
 X_train = np.reshape(X_train, (X_train.shape[0], -1))
 X_train = np.divide(X_train, 256)
 X_test, y_test = load_mnist('training', [0,1]  )

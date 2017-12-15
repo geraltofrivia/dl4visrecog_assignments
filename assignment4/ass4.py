@@ -22,9 +22,9 @@ def main(_):
     testY = temp
 
     # hyperparams and configuration
-    batch_size = 10
+    batch_size = 24
     learning_rates = [0.001]#, 0.001, 0.01, 0.1, 0.0001]
-    epochs = 10
+    epochs = 20
     logs_path = ".tmp/orl/2"
 
     n_input = 10304
@@ -99,7 +99,7 @@ def main(_):
 
     for learning_rate in learning_rates:
         # Construct model
-        logits = conv_net(X, weights, biases, keep_prob, enableDropout=True)
+        logits = conv_net(X, weights, biases, keep_prob, enableDropout=False)
         prediction = tf.nn.softmax(logits)
 
         # Define loss and optimizer

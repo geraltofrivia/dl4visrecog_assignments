@@ -1,0 +1,117 @@
+Epoch:  0  Accuracy:  0.00833333345751  Loss:  72210718.9167
+Epoch:  1  Accuracy:  0.00833333345751  Loss:  41846940.7917
+Epoch:  2  Accuracy:  0.016666666915  Loss:  30349548.2083
+Epoch:  3  Accuracy:  0.104166667908  Loss:  24922539.3646
+Epoch:  4  Accuracy:  0.13750000298  Loss:  16739065.3438
+Epoch:  5  Accuracy:  0.312500002794  Loss:  10272034.5625
+Epoch:  6  Accuracy:  0.325000005464  Loss:  10115878.3555
+Epoch:  7  Accuracy:  0.345833336624  Loss:  8792780.83464
+Epoch:  8  Accuracy:  0.466666671758  Loss:  5416455.57943
+Epoch:  9  Accuracy:  0.608333334016  Loss:  4770167.85482
+Epoch:  10  Accuracy:  0.791666664494  Loss:  992634.977865
+Epoch:  11  Accuracy:  0.841666665239  Loss:  657982.427734
+Epoch:  12  Accuracy:  0.89583333085  Loss:  434335.140625
+Epoch:  13  Accuracy:  0.933333327373  Loss:  151692.241007
+Epoch:  14  Accuracy:  0.858333330912  Loss:  1219069.82898
+Epoch:  15  Accuracy:  0.949999993046  Loss:  147446.78125
+Epoch:  16  Accuracy:  0.887500001738  Loss:  668819.283854
+Epoch:  17  Accuracy:  0.858333331222  Loss:  2984687.39681
+Epoch:  18  Accuracy:  0.841666667412  Loss:  947999.142904
+Epoch:  19  Accuracy:  0.766666666294  Loss:  2284889.9082
+0.0005
+Test accuracy:  0.675
+done
+Epoch:  0  Accuracy:  0.00833333345751  Loss:  87087211.75
+Epoch:  1  Accuracy:  0.0541666665425  Loss:  47955838.7448
+Epoch:  2  Accuracy:  0.0791666681568  Loss:  21699316.5573
+Epoch:  3  Accuracy:  0.266666669399  Loss:  17048213.127
+Epoch:  4  Accuracy:  0.316666667039  Loss:  8900361.58333
+Epoch:  5  Accuracy:  0.541666666046  Loss:  5964307.77018
+Epoch:  6  Accuracy:  0.679166662196  Loss:  3033982.99194
+Epoch:  7  Accuracy:  0.770833333644  Loss:  1776795.12891
+Epoch:  8  Accuracy:  0.870833332961  Loss:  1279352.5931
+Epoch:  9  Accuracy:  0.858333331843  Loss:  470760.899495
+Epoch:  10  Accuracy:  0.924999995778  Loss:  279638.689453
+Epoch:  11  Accuracy:  0.974999999007  Loss:  62195.2687581
+Epoch:  12  Accuracy:  0.945833331595  Loss:  495966.625651
+Epoch:  13  Accuracy:  0.90833333383  Loss:  740310.80599
+Epoch:  14  Accuracy:  0.870833333892  Loss:  746627.459635
+Epoch:  15  Accuracy:  0.833333329918  Loss:  2558537.54948
+Epoch:  16  Accuracy:  0.833333333333  Loss:  1363080.44694
+Epoch:  17  Accuracy:  0.891666668778  Loss:  593215.557292
+Epoch:  18  Accuracy:  0.920833332464  Loss:  362444.145833
+Epoch:  19  Accuracy:  0.98749999702  Loss:  14488.1495361
+0.001
+Test accuracy:  0.775
+done
+Epoch:  0  Accuracy:  0.00833333345751  Loss:  96608589.0625
+Epoch:  1  Accuracy:  0.0291666671013  Loss:  1286327.19076
+Epoch:  2  Accuracy:  0.220833337866  Loss:  250536.329427
+Epoch:  3  Accuracy:  0.50833333532  Loss:  51830.5174154
+Epoch:  4  Accuracy:  0.754166664245  Loss:  18878.1361084
+Epoch:  5  Accuracy:  0.87916666766  Loss:  7496.23695056
+Epoch:  6  Accuracy:  0.94999999553  Loss:  1943.54570516
+Epoch:  7  Accuracy:  0.987499999503  Loss:  379.426343282
+Epoch:  8  Accuracy:  0.99166666468  Loss:  58.800327301
+Epoch:  9  Accuracy:  1.0  Loss:  0.0
+Epoch:  10  Accuracy:  1.0  Loss:  0.0
+Epoch:  11  Accuracy:  1.0  Loss:  0.0
+Epoch:  12  Accuracy:  1.0  Loss:  0.0
+Epoch:  13  Accuracy:  1.0  Loss:  0.0
+Epoch:  14  Accuracy:  1.0  Loss:  0.0
+Epoch:  15  Accuracy:  1.0  Loss:  0.0
+Epoch:  16  Accuracy:  1.0  Loss:  0.0
+Epoch:  17  Accuracy:  1.0  Loss:  0.0
+Epoch:  18  Accuracy:  1.0  Loss:  0.0
+Epoch:  19  Accuracy:  1.0  Loss:  0.0
+0.01
+Test accuracy:  0.5375
+done
+Epoch:  0  Accuracy:  0.03333333383  Loss:  420289738.686
+Epoch:  1  Accuracy:  0.0416666666667  Loss:  59.8458628505
+Epoch:  2  Accuracy:  0.0500000001242  Loss:  17.6650300144
+Epoch:  3  Accuracy:  0.0583333335817  Loss:  17.9726035198
+Epoch:  4  Accuracy:  0.0  Loss:  15.8432446718
+Epoch:  5  Accuracy:  0.0  Loss:  12.0929298401
+Epoch:  6  Accuracy:  0.0  Loss:  10.6609759331
+Epoch:  7  Accuracy:  0.0  Loss:  10.8333470623
+Epoch:  8  Accuracy:  0.0  Loss:  9.21408099929
+Epoch:  9  Accuracy:  0.0  Loss:  9.02072956165
+Epoch:  10  Accuracy:  0.0  Loss:  7.99708020687
+Epoch:  11  Accuracy:  0.0  Loss:  7.39190373818
+Epoch:  12  Accuracy:  0.0  Loss:  6.92080337803
+Epoch:  13  Accuracy:  0.0  Loss:  6.8341427048
+Epoch:  14  Accuracy:  0.0  Loss:  6.16582362851
+Epoch:  15  Accuracy:  0.0  Loss:  6.28401676814
+Epoch:  16  Accuracy:  0.0  Loss:  5.49160125852
+Epoch:  17  Accuracy:  0.0  Loss:  5.87518814206
+Epoch:  18  Accuracy:  0.0  Loss:  4.91693778833
+Epoch:  19  Accuracy:  0.0  Loss:  5.12511705359
+0.1
+Test accuracy:  0.05
+done
+Epoch:  0  Accuracy:  0.0375000008692  Loss:  55054084.625
+Epoch:  1  Accuracy:  0.0375000005588  Loss:  36136575.2292
+Epoch:  2  Accuracy:  0.0624999993791  Loss:  22435638.1836
+Epoch:  3  Accuracy:  0.0666666679705  Loss:  16363623.3125
+Epoch:  4  Accuracy:  0.100000000248  Loss:  13845680.9948
+Epoch:  5  Accuracy:  0.116666667474  Loss:  11707201.625
+Epoch:  6  Accuracy:  0.137500000497  Loss:  10443936.1302
+Epoch:  7  Accuracy:  0.183333333892  Loss:  9193910.31771
+Epoch:  8  Accuracy:  0.195833335631  Loss:  8136156.53906
+Epoch:  9  Accuracy:  0.229166666667  Loss:  7754501.02995
+Epoch:  10  Accuracy:  0.258333334699  Loss:  6130230.19531
+Epoch:  11  Accuracy:  0.304166666853  Loss:  5997648.01847
+Epoch:  12  Accuracy:  0.312500005277  Loss:  5078261.92708
+Epoch:  13  Accuracy:  0.387500008258  Loss:  4339716.25944
+Epoch:  14  Accuracy:  0.425000006023  Loss:  3550056.54297
+Epoch:  15  Accuracy:  0.445833338114  Loss:  3192784.86458
+Epoch:  16  Accuracy:  0.525000006892  Loss:  2421732.8776
+Epoch:  17  Accuracy:  0.583333335196  Loss:  2029897.30208
+Epoch:  18  Accuracy:  0.57916667033  Loss:  2071679.98828
+Epoch:  19  Accuracy:  0.620833334823  Loss:  1459108.1849
+0.0001
+Test accuracy:  0.43125
+done
+
+Process finished with exit code 0

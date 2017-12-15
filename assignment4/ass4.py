@@ -1,5 +1,6 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import math
 import numpy as np
 
 
@@ -22,8 +23,8 @@ def main(_):
 
     # hyperparams and configuration
     batch_size = 10
-    learning_rates = [0.0005, 0.001, 0.01, 0.1, 0.0001]
-    epochs = 20
+    learning_rates = [0.001]#, 0.001, 0.01, 0.1, 0.0001]
+    epochs = 10
     logs_path = ".tmp/orl/2"
 
     n_input = 10304
@@ -98,7 +99,7 @@ def main(_):
 
     for learning_rate in learning_rates:
         # Construct model
-        logits = conv_net(X, weights, biases, keep_prob, enableDropout=False)
+        logits = conv_net(X, weights, biases, keep_prob, enableDropout=True)
         prediction = tf.nn.softmax(logits)
 
         # Define loss and optimizer
@@ -152,6 +153,26 @@ def main(_):
             print "Test accuracy: ", accuracy.eval(feed_dict={X: testX, Y: testY})
 
             print "done"
+
+            def visualise_conv_filter(weights, session):
+
+                conv_filter = session.run(weights)  # get weights
+                # sub plots grid layout
+                sub_plots_grids = int(math.ceil(math.sqrt(conv_filter.shape[3])))
+
+                # plot figure with sub-plots an grids.
+                fig, axs = plt.subplots(sub_plots_grids, sub_plots_grids)
+
+                for i, ax in enumerate(axs.flat):  # loop through all the filters
+                    if i < conv_filter.shape[3]:  # check if a filter is valid
+                        img = conv_filter[:, :, 0, i]  # format image
+                        ax.imshow(img, vmin=np.min(conv_filter), vmax=np.max(conv_filter))  # plot image
+
+                    # Remove marks from the axis
+                    ax.set_yticks([])
+                    ax.set_xticks([])
+
+            visualise_conv_filter(weights["wc1"], sess)
 
 
 if __name__ == '__main__':

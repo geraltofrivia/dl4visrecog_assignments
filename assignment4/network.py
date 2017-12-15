@@ -7,18 +7,16 @@ tf.logging.set_verbosity(tf.logging.INFO)
 
 ######### Macros and Hyper-parameters #########
 learning_rate = 0.001
-num_steps = 500
-display_step = 10
-epochs = 200
+epochs = 1000
 
 batch_size = 6
 num_input = 92 * 112
 n_classes = 20  # Data has faces of 20 diff people
-p_dropout = 0.03  # Dropout, probability to drop
+p_dropout = 0.4  # Dropout, probability to drop
 
 # Nitty Gritties | format - (layer1_val, layer2_val)
 strides = (2, 2)
-filters = (16, 36)
+filters = (32, 64)
 kernels = (5, 5)
 shape = (92, 112)
 
@@ -90,7 +88,7 @@ def model(features, labels, mode):
         IP Dim - [-1, 23, 28, 64]
         OP Dim - [-1, 23* 28* 64]
     """
-    flattened_layer = tf.reshape(layer2_maxpool, [-1, 23*28*36])
+    flattened_layer = tf.reshape(layer2_maxpool, [-1, 23*28*64])
 
     """
         MLP Time
@@ -99,7 +97,7 @@ def model(features, labels, mode):
         IP Dim - [ -1, 23* 28* 64]
         OP Dim - [ -1, 23* 28* 64]
     """
-    dense = tf.layers.dense(inputs=flattened_layer, units=100, activation=tf.nn.relu)
+    dense = tf.layers.dense(inputs=flattened_layer, units=200, activation=tf.nn.relu)
     dropout = tf.layers.dropout(inputs=dense, rate=p_dropout, training=mode == tf.estimator.ModeKeys.TRAIN)
     output = tf.layers.dense(inputs=dropout, units=n_classes)
 
@@ -122,7 +120,7 @@ def model(features, labels, mode):
 
     # Configure the Training Op (for TRAIN mode)
     if mode == tf.estimator.ModeKeys.TRAIN:
-        optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
         train_op = optimizer.minimize(
             loss=loss,
             global_step=tf.train.get_global_step())
@@ -130,8 +128,8 @@ def model(features, labels, mode):
 
     # Add evaluation metrics (for EVAL mode)
     eval_metric_ops = {
-        "accuracy": tf.metrics.accuracy(
-            labels=labels, predictions=predictions["classes"])}
+        # "accuracy": tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=output, labels=labels))}
+        "accuracy": tf.metrics.accuracy(labels=labels, predictions=predictions["classes"])}
     return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metric_ops)
 
 
@@ -185,4 +183,5 @@ def main(useless_boilerplate_unknown_param):
 
 
 if __name__ == "__main__":
+
     tf.app.run()

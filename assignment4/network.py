@@ -7,18 +7,19 @@ tf.logging.set_verbosity(tf.logging.INFO)
 
 ######### Macros and Hyper-parameters #########
 learning_rate = 0.001
-epochs = 1000
+epochs = 100
 
-batch_size = 6
+batch_size = 24
 num_input = 92 * 112
 n_classes = 20  # Data has faces of 20 diff people
-p_dropout = 0.4  # Dropout, probability to drop
+p_dropout = 0.04  # Dropout, probability to drop
 
 # Nitty Gritties | format - (layer1_val, layer2_val)
 strides = (2, 2)
 filters = (32, 64)
 kernels = (5, 5)
 shape = (92, 112)
+dense_units = 200
 
 
 # Function to represent the model
@@ -97,9 +98,9 @@ def model(features, labels, mode):
         IP Dim - [ -1, 23* 28* 64]
         OP Dim - [ -1, 23* 28* 64]
     """
-    dense = tf.layers.dense(inputs=flattened_layer, units=200, activation=tf.nn.relu)
-    dropout = tf.layers.dropout(inputs=dense, rate=p_dropout, training=mode == tf.estimator.ModeKeys.TRAIN)
-    output = tf.layers.dense(inputs=dropout, units=n_classes)
+    dropout = tf.layers.dropout(inputs=flattened_layer, rate=p_dropout, training=mode == tf.estimator.ModeKeys.TRAIN)
+    dense = tf.layers.dense(inputs=dropout, units=dense_units, activation=tf.nn.relu)
+    output = tf.layers.dense(inputs=dense, units=n_classes)
 
     # One hot the labels
     onehot_labels = tf.one_hot(indices=tf.cast(labels, tf.int32), depth=n_classes)

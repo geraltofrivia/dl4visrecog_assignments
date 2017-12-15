@@ -9,17 +9,17 @@ tf.logging.set_verbosity(tf.logging.INFO)
 learning_rate = 0.001
 num_steps = 500
 display_step = 10
-epochs = 10
+epochs = 200
 
-batch_size = 10
+batch_size = 6
 num_input = 92 * 112
 n_classes = 20  # Data has faces of 20 diff people
-p_dropout = 0.25  # Dropout, probability to drop
+p_dropout = 0.03  # Dropout, probability to drop
 
 # Nitty Gritties | format - (layer1_val, layer2_val)
 strides = (2, 2)
-filters = (32, 64)
-kernels = (10, 5)
+filters = (16, 36)
+kernels = (5, 5)
 shape = (92, 112)
 
 
@@ -90,7 +90,7 @@ def model(features, labels, mode):
         IP Dim - [-1, 23, 28, 64]
         OP Dim - [-1, 23* 28* 64]
     """
-    flattened_layer = tf.reshape(layer2_maxpool, [-1, 23*28*64 ])
+    flattened_layer = tf.reshape(layer2_maxpool, [-1, 23*28*36])
 
     """
         MLP Time
@@ -99,12 +99,15 @@ def model(features, labels, mode):
         IP Dim - [ -1, 23* 28* 64]
         OP Dim - [ -1, 23* 28* 64]
     """
-    dense = tf.layers.dense(inputs=flattened_layer, units=1024, activation=tf.nn.relu)
+    dense = tf.layers.dense(inputs=flattened_layer, units=100, activation=tf.nn.relu)
     dropout = tf.layers.dropout(inputs=dense, rate=p_dropout, training=mode == tf.estimator.ModeKeys.TRAIN)
     output = tf.layers.dense(inputs=dropout, units=n_classes)
 
+    # One hot the labels
+    onehot_labels = tf.one_hot(indices=tf.cast(labels, tf.int32), depth=n_classes)
+
     # Calculate Loss
-    loss = tf.losses.softmax_cross_entropy(onehot_labels=labels, logits=output)
+    loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=output)
 
     # More boilerplate code IDK what to do with
     predictions = {
@@ -141,10 +144,10 @@ def main(useless_boilerplate_unknown_param):
     X_test = data['testX'].astype("float32")
     Y_test = data['testY'].astype("int32")
 
-    # One hot encode the y labels
-    one_hot_matrix = np.eye(n_classes)
-    Y_train = one_hot_matrix[Y_train].astype("int32")
-    Y_test = one_hot_matrix[Y_test].astype("int32")
+    # # One hot encode the y labels
+    # one_hot_matrix = np.eye(n_classes)
+    # Y_train = one_hot_matrix[Y_train].astype("int32")
+    # Y_test = one_hot_matrix[Y_test].astype("int32")
 
     # Create estimator, plug the model fn there
     estimator = tf.estimator.Estimator(
